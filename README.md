@@ -1,2 +1,3 @@
 # CN-Lab-5thSem
-All the programs i did in my computer networks lab in 5th Semester.
+These are all the programs I wrote in my Computer Networks Lab in 5th Semester.
+
