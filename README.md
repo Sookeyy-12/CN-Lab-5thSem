@@ -3,16 +3,16 @@ These are all the programs I wrote in my Computer Networks Lab in 5th Semester.
 
 ## Lab 2 | 30-07-2024
 
-<details><summary><a href="https://Example.com">1. Find the IP address of your computer. Try connecting to different service providers and notice
-the changes, if any, in the IP address of your machine.</a></summary>
+<details><summary>1. Find the IP address of your computer. Try connecting to different service providers and notice
+the changes, if any, in the IP address of your machine.</summary>
 
 ![ipconfig](Images/image.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">2. Run traceroute via two or more service providers for www.kiit.ac.in and report your
+<details><summary>2. Run traceroute via two or more service providers for www.kiit.ac.in and report your
 observations, like if some paths default to IPv6 then how can you force traceroute to use IPv4,
-any private IP addresses routers that do not reply to requests, etc.</a></summary>
+any private IP addresses routers that do not reply to requests, etc.</summary>
 
 1. Normal `tracert`
 ![alt text](Images/image-1.png)
@@ -22,19 +22,19 @@ any private IP addresses routers that do not reply to requests, etc.</a></summar
 
 </details>
 
-<details><summary><a href="https://Example.com">3. How can you limit the number of hops to 10 in a traceroute command?</a></summary>
+<details><summary>3. How can you limit the number of hops to 10 in a traceroute command?</summary>
 
 ![alt text](Images/image-3.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">4. How can you display statistics for all protocols using the netstat command?</a></summary>
+<details><summary>4. How can you display statistics for all protocols using the netstat command?</summary>
 
 ![alt text](Images/image-4.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">5. Use nslookup to find the IP Address of `www.kiit.ac.in` and `www.facebook.com`</a></summary>
+<details><summary>5. Use nslookup to find the IP Address of `www.kiit.ac.in` and `www.facebook.com`</summary>
 
 1. `www.kiit.ac.in`
 ![alt text](Images/image-5.png)
@@ -44,27 +44,27 @@ any private IP addresses routers that do not reply to requests, etc.</a></summar
 
 </details>
 
-<details><summary><a href="https://Example.com">6. How can you perform a reverse DNS lookup to find the domain name associated with the IP
-address 8.8.8.8?</a></summary>
+<details><summary>6. How can you perform a reverse DNS lookup to find the domain name associated with the IP
+address 8.8.8.8?</summary>
 
 ![alt text](Images/image-8.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">7. How can you use nslookup to query www.example.com using the DNS server at 8.8.8.8?</a></summary>
+<details><summary>7. How can you use nslookup to query www.example.com using the DNS server at 8.8.8.8?</summary>
 
 ![alt text](Images/image-7.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">8. How do you use the ipconfig command to display all current TCP/IP network configurations?</a></summary>
+<details><summary>8. How do you use the ipconfig command to display all current TCP/IP network configurations?</summary>
 
 ![alt text](Images/image-9.png)
 
 </details>
 
-<details><summary><a href="https://Example.com">9. What are the ipconfig commands to release and renew an IP address on a Windows
-machine?</a></summary>
+<details><summary>9. What are the ipconfig commands to release and renew an IP address on a Windows
+machine?</summary>
 
 1. release
 ![alt text](Images/image-10.png)
