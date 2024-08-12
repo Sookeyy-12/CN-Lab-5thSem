@@ -8,7 +8,18 @@ unsigned int reverseEndianness(unsigned char* byte1, unsigned char* byte2, unsig
     return rev;
 }
 
+void check_endianness() {
+    unsigned int test = 1;
+    char *byte = (char *)&test;
+    if (*byte) {
+        printf("The machine is Little Endian.\n");
+    } else {
+        printf("The machine is Big Endian.\n");
+    }
+}
+
 int main() {
+    check_endianness();
     unsigned int num;
     printf("Enter a number: ");
     scanf("%u", &num);
