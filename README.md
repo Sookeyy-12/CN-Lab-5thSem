@@ -99,3 +99,7 @@ struct pkt {
 };
 ```
 5. `lilbigendian.c` Write a C program to check whether the Host machine is Little Endian or Big Endian. Enter a number, print the content of each byte location and convert the endianess of the same.
+
+## Lab 3 | 13-08-2024
+
+1. `sockCreation.c` Socket Creation and Checking.
