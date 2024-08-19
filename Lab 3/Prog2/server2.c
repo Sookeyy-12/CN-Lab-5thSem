@@ -2,13 +2,14 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 #define PORT 8080
 
 int main() {
     int server_socket;
     struct sockaddr_in server_address, client_address;
-    char buffer[1024] = {0};
+    char buffer[1024] = {'\0'};
     socklen_t client_address_len = sizeof(client_address);
 
     // Create socket    
@@ -40,6 +41,6 @@ int main() {
     }
     printf("Received message from client: %s\n", buffer);
 
-    pclose(server_socket);
+    close(server_socket);
     return 0;
 }
