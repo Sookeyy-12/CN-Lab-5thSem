@@ -36,7 +36,7 @@ int main() {
     since in UDP, it is not possible for server to directly send a message to client,
     client first needs to send a message to server so that the server can identify the client
     */
-    char* recieved_fromClient[1024];
+    char recieved_fromClient[1024] = {'\0'};
     int isRecieved = recvfrom(
         sockfd, recieved_fromClient, sizeof(recieved_fromClient), 0, (struct sockaddr*)&clientAddr, &clientAddrLen
         );

@@ -32,7 +32,7 @@ int main() {
     }
 
     // Recieve from server
-    char recieved_fromServer[1024];
+    char recieved_fromServer[1024] = {'\0'};
     int recieved = recvfrom(
         sockfd, recieved_fromServer, sizeof(recieved_fromServer), 0, (struct sockaddr*)&serverAddr, &serverAddrLen
     );
