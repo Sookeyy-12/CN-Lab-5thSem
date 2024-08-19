@@ -11,7 +11,7 @@ int main() {
     char buffer[1024] = {0};
     socklen_t client_address_len = sizeof(client_address);
 
-    // Create socket
+    // Create socket    
     server_socket = socket(AF_INET, SOCK_DGRAM, 0);
     if (server_socket == -1) {
         printf("Socket creation failed\n");
