@@ -106,3 +106,7 @@ struct pkt {
 2. `Prog2\` Write a C program in UDP to send a message `"Hello KIIT"` from client to server. Display the message on the server side.
 3. `Prog3\` Write a C program in UDP to send a message `"Thank you!!!"` from server to client. Display the message on the client side.
 4. `Prog4\` Write a program to pass a string from client to server. Display the lower case message in the server. Further, convert the message from lower case to upper case and display the converted message in client side.
+
+## Lab 4 | 20-08-2024
+
+1. `Prog1\` Write a program to pass a string from client to server. Display the string in server side. Further, find the reverse of the string and send the same to the client and display the reversed string in client side.
