@@ -110,3 +110,4 @@ struct pkt {
 ## Lab 4 | 20-08-2024
 
 1. `Prog1\` Write a program to pass a string from client to server. Display the string in server side. Further, find the reverse of the string and send the same to the client and display the reversed string in client side.
+2. `Prog2\` Write a program to pass an integer array from client to server and print the array in server side.
