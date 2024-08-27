@@ -4,16 +4,17 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-int findNumVowels(char* str) {
-    int cnt = 0;
-    for (int i = 0; i < 1024; i++) {
-        if(str[i] == '\0') return cnt;
-        else if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u'
-        || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
-            cnt++;
-        }    
+int getSecLargest (int arr[]) {
+    int largest = -1, secLargest = -1;
+    for (int i = 0; i < 10; i++) {
+        if(arr[i] > largest) {
+            secLargest = largest;
+            largest = arr[i];
+        } else if(arr[i] > secLargest && arr[i] != largest) {
+            secLargest = arr[i];
+        }
     }
-    return cnt;
+    return secLargest;
 }
 
 int main() {
@@ -45,16 +46,16 @@ int main() {
     else printf("Connection from Client Accepted.\n");
 
     // Recieve Message
-    char buffer[1024] = {'\0'};
-    int isRecv = recv(newsockfd, buffer, 1024, 0);
+    int array[10];
+    int isRecv = recv(newsockfd, array, sizeof(array), 0);
     if(isRecv<0) printf("Message couldn't be recieved.\n");
-    else printf("Message Recieved: %s\n", buffer);
+    else printf("Message Recieved: %s\n", array);
 
     // Process Message
-    int numVowels = findNumVowels(buffer);
+    int secLargest = getSecLargest(array);
 
     // Send Message
-    int isSent = send(newsockfd, &numVowels, sizeof(numVowels), 0);
+    int isSent = send(newsockfd, &secLargest, sizeof(secLargest), 0);
     if(isSent<0) printf("Message couldn't be sent.\n");
     else printf("Message Sent Successfully.\n");
 

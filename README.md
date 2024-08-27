@@ -126,6 +126,6 @@ the string and then check if the string is a palindrome or not.
 4. `Prog4\` Write a program in TCP to pass an integer array from client to server. 
 Display the array on the server side and then determine the sum of elements of array. 
 The server sends back this sum to the client side which will display the same.
-
-2or3
-4or5
+5. `Prog5\` Write a program in TCP to pass an integer array from client to server. 
+On the server side determine the second largest element of the array and send back that element to the client. 
+The client will then display that element.
