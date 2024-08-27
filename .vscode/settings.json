@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "winsock.h": "c"
+        "winsock.h": "c",
+        "system_error": "c"
     }
 }
