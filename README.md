@@ -113,3 +113,8 @@ struct pkt {
 2. `Prog2\` Write a program to pass an integer array from client to server and print the array in server side.
 3. `Prog3\` Write a program to pass an integer array from client to server. Determine the greatest element on the server side and print it in the client side.
 4. `Prog4\` Write a program to pass an integer array from client to server. On the server side, perform the sorting operation and send back the sorted array to the client. Display the sorted array on the client side.
+
+## Lab 5 | 27-08-2024
+
+1. `Prog1\` Write a program in TCP to establish a connection between a client and a server. Display
+appropriate messages to confirm the connection establishment or error scenario. 
