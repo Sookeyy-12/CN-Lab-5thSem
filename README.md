@@ -116,5 +116,12 @@ struct pkt {
 
 ## Lab 5 | 27-08-2024
 
-1. `Prog1\` Write a program in TCP to establish a connection between a client and a server. Display
-appropriate messages to confirm the connection establishment or error scenario. 
+1. `Prog1\` Write a program in TCP to establish a connection between a client and a server. 
+Display appropriate messages to confirm the connection establishment or error scenario. 
+2. `Prog2\` Write a program in TCP to pass a string “Welcome to KIIT” from client to server. 
+Display the string in server side. Further, determine the number of vowels in the string and send the same to
+the client. The client will display the number of vowels present.
+3. `Prog3\` 
+
+2or3
+4or5
