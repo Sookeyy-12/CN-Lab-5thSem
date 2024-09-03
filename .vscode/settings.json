@@ -2,6 +2,7 @@
     "files.associations": {
         "winsock.h": "c",
         "system_error": "c",
-        "valarray": "c"
+        "valarray": "c",
+        "tuple": "c"
     }
 }
