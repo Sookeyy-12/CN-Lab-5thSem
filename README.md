@@ -133,4 +133,5 @@ The client will then display that element.
 ## Lab 6 | 03-09-2024
 1. `Prog1\` Write a C program in UDP to pass a string from client to server. On the server side, display the string, futhur, the server will check if the string is a palindrome or not. If palindrome, then, server will send a message back to the client otherwise server will find the difference of two characters where the strings became different. This difference will be passed to the client, and displayed on the client side accordingly.
 2. `Prog2\` Write a C program using UDP to pass 1D array from client to server, the server will determine total number of prime numbers and the result will be sent back to the client where it is displayed accordingly.
-3. Write a C program in TCP to pass 
+3. `Prog3\` WAP using TCP to pass 2 strings from client to server. on the server side, it will check if the strings are same or different. The server will print the msg. accordingly.
+4. `Prog4\` WAP using TCP to pass a matrix of size of 3 x 3 from client to server. The server will display the matrix and it will find the sum of main diagonal elements and result is send back to the client, where is displayed accordingly.
