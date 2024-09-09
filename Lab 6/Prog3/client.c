@@ -1,44 +1,47 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 int main() {
-    // Create socket
+    // Create Socket
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) {
-        perror("Socket creation failed");
-        exit(EXIT_FAILURE);
-    }
-    printf("Socket created successfully\n");
+    if(sockfd < 0) printf("Socket Creation Failed\n");
+    else printf("Socket Created Successfully\n");
 
-    // Define the server address
+    // Connect
     struct sockaddr_in serverAddr = {
         .sin_family = AF_INET,
         .sin_port = htons(8080),
-        .sin_addr.s_addr = inet_addr("127.0.0.1"),  // Server is running on localhost
+        .sin_addr.s_addr = INADDR_ANY,
     };
+    struct sockaddr_in clientAddr;
+    socklen_t clientAddrLen = sizeof(clientAddr);
+    int isConnect = connect(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
+    if(isConnect < 0) printf("Connection Failed\n");
+    else printf("Connection Established\n");
 
-    // Connect to the server
-    if (connect(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
-        perror("Connection to server failed");
-        close(sockfd);
-        exit(EXIT_FAILURE);
+    // SEnd
+    char str1[1024] = {"Hello There"};
+    char str2[1024] = {"Hello There"};
+    int isSend1 = send(sockfd, str1, 1024, 0);
+    int isSend2 = send(sockfd, str2, 1024, 0);
+    if(isSend1 < 0 || isSend2 < 0) printf("Send Failed\n");
+    else printf("Send Successfully\n");
+
+    // Reciee
+    int isSame;
+    int isRecv = recv(sockfd, &isSame, sizeof(isSame), 0);
+    if(isRecv < 0) {
+        printf("Recieve Failed\n");
+    } else {
+        printf("Recieved Successfully\n");
+        if(isSame == 0) printf("Strings are Same\n");
+        else printf("Strings are Different\n");
     }
-    printf("Connected to server\n");
 
-    // Send two strings to the server
-    char str1[1024] = "hello";
-    char str2[1024] = "hello";
-
-    send(sockfd, str1, strlen(str1) + 1, 0);
-    send(sockfd, str2, strlen(str2) + 1, 0);
-
-    printf("Strings sent to server\n");
-
-    // Close the socket
+    // Close
     close(sockfd);
-
     return 0;
 }

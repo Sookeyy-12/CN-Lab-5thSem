@@ -1,72 +1,53 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 int main() {
-    // Create socket
+    // Create Socket
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) {
-        perror("Socket creation failed");
-        exit(EXIT_FAILURE);
-    }
-    printf("Socket created successfully\n");
+    if (sockfd < 0) printf("Socket Creation Failed\n");
+    else printf("Socket Created Successfully\n");
 
-    // Bind the socket to a port
+    // Bind Socket
     struct sockaddr_in serverAddr = {
         .sin_family = AF_INET,
         .sin_port = htons(8080),
         .sin_addr.s_addr = INADDR_ANY,
     };
-
-    if (bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
-        perror("Socket bind failed");
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
-    printf("Socket binded successfully\n");
-
-    // Listen for incoming connections
-    if (listen(sockfd, 3) < 0) {
-        perror("Listen failed");
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
-    printf("Listening for incoming connections...\n");
-
-    // Accept a connection
-    int newSocket;
     struct sockaddr_in clientAddr;
-    socklen_t addrLen = sizeof(clientAddr);
-    newSocket = accept(sockfd, (struct sockaddr*)&clientAddr, &addrLen);
-    if (newSocket < 0) {
-        perror("Accept failed");
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
-    printf("Connection accepted from client\n");
+    socklen_t clientAddrLen = sizeof(clientAddr);
+    int isBind = bind(sockfd, (struct sockaddr*)&serverAddr, sizeof(serverAddr));
+    if(isBind < 0) printf("Bind Failed\n");
+    else printf("Bind Successfull\n");
 
-    // Receive the two strings from the client
-    char str1[1024] = {0};
-    char str2[1024] = {0};
+    // Listen
+    int isListen = listen(sockfd, 5);
+    if (isListen < 0) printf("Listen Failed\n");
+    else printf("Listening on Socket...\n");
 
-    read(newSocket, str1, sizeof(str1));
-    read(newSocket, str2, sizeof(str2));
+    // Accept
+    int new_sockfd = accept(sockfd, (struct sockaddr*)&clientAddr, &clientAddrLen);
+    if(new_sockfd < 0) printf("Connection with Client Failed\n");
+    else printf("Connection with Client Established\n");
 
-    printf("Received String 1: %s\n", str1);
-    printf("Received String 2: %s\n", str2);
+    // recieve
+    char str1[1024] = {'\0'};
+    char str2[1024] = {'\0'};
+    int isRecv = recv(new_sockfd, str1, 1024, 0);
+    isRecv = recv(new_sockfd, str2, 1024, 0);
+    printf("Recieved String 1: %s\n", str1);
+    printf("Recieved String 2: %s\n", str2);
 
-    // Check if the strings are the same or different
-    if (strcmp(str1, str2) == 0) {
-        printf("Strings are the same\n");
-    } else {
-        printf("Strings are different\n");
-    }
+    // Send
+    int isSame = strcmp(str1, str2);
+    int isSend = send(new_sockfd, &isSame, sizeof(isSame), 0);
+    if(isSend < 0) printf("Send Failed\n");
+    else printf("Send Successfully\n");
 
-    // Close the sockets
-    close(newSocket);
+    // Close
     close(sockfd);
-
+    close(new_sockfd);
     return 0;
 }
