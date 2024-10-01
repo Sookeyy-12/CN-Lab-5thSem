@@ -28,7 +28,7 @@ int main() {
 
         int isSend = send(sockfd, buffer, strlen(buffer), 0);
         if(isSend < 0) printf("Message failed to send.\n");
-        else printf("Message Sent.\n");
+        // else printf("Message Sent.\n");
 
         if(strcmp(buffer, "logout") == 0) {
             printf("Logging out...\n");

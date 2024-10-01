@@ -16,33 +16,27 @@
 void handle_client_message(int client_socket, fd_set *all_fds) {
     char buffer[BUFFER_SIZE];
     int bytes_read = recv(client_socket, buffer, sizeof(buffer), 0);
-    // If error or client disconnects
     if (bytes_read <= 0) {
         if (bytes_read == 0) {
             printf("Client disconnected from socket %d\n", client_socket);
-        } else {
-            perror("recv");
         }
         close(client_socket);
         FD_CLR(client_socket, all_fds);
     } else {
-        buffer[bytes_read] = '\0';  // Null-terminate the received message
+        buffer[bytes_read] = '\0';
         printf("Received message: %s from socket %d\n", buffer, client_socket);
-
-        // Check for logout message
         if (strcmp(buffer, "logout") == 0) {
             printf("Client requested logout from socket %d\n", client_socket);
             close(client_socket);
-            FD_CLR(client_socket, all_fds);  // Remove from set
+            FD_CLR(client_socket, all_fds);
         } else {
-            // Echo the message back to the client
             send(client_socket, buffer, bytes_read, 0);
         }
     }
 }
 
 int main() {
-    int server_socket, client_socket, max_fd, activity;
+    int client_socket, max_fd, activity;
     struct sockaddr_in server_addr = {
         .sin_family = AF_INET,
         .sin_port = htons(PORT),
@@ -53,24 +47,19 @@ int main() {
     fd_set read_fds, all_fds;
     
     // Create a socket
-    if ((server_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("Socket creation failed");
-    }
-    printf("Socket created successfully.\n");
+    int server_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if(server_socket < 0) printf("Socket Creation Failed\n");
+    else printf("Socket Created Succesfuly\n");
 
     // Bind the socket to the specified port
-    if (bind(server_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        perror("Bind failed");
-        close(server_socket);
-    }
-    printf("Socket binded successfully.\n");
+    int isBind = bind(server_socket, (struct sockaddr*)&server_addr, sizeof(server_addr));
+    if(isBind < 0) printf("Bind Failed\n");
+    else printf("Bind Successful\n");
 
     // Listen for incoming connections
-    if (listen(server_socket, BACKLOG) == -1) {
-        perror("Listen failed");
-        close(server_socket);
-    }
-    printf("Listening for incoming connections...\n");
+    int isListen = listen(server_socket, BACKLOG);
+    if(isListen < 0) printf("Listening Failed\n");
+    else printf("Listening For Connections...\n");
 
     // Initialize the fd sets
     FD_ZERO(&all_fds);
@@ -83,15 +72,15 @@ int main() {
         // Monitor sockets for activity using select
         activity = select(max_fd + 1, &read_fds, NULL, NULL, NULL);
 
-        if (activity < 0 && errno != EINTR) {
-            perror("Select error");
+        if (activity < 0) {
+            printf("Select error");
         }
 
         // Check for new incoming connection
         if (FD_ISSET(server_socket, &read_fds)) {
             client_socket = accept(server_socket, (struct sockaddr*)&clientAddr, &addrlen);
             if (client_socket < 0) {
-                perror("Accept failed");
+                printf("Accept failed");
                 continue;
             }
             printf("New client connected on socket %d\n", client_socket);
