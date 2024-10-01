@@ -135,3 +135,6 @@ The client will then display that element.
 2. `Prog2\` Write a C program using UDP to pass 1D array from client to server, the server will determine total number of prime numbers and the result will be sent back to the client where it is displayed accordingly.
 3. `Prog3\` WAP using TCP to pass 2 strings from client to server. on the server side, it will check if the strings are same or different. The server will print the msg. accordingly.
 4. `Prog4\` WAP using TCP to pass a matrix of size of 3 x 3 from client to server. The server will display the matrix and it will find the sum of main diagonal elements and result is send back to the client, where is displayed accordingly.
+
+## Lab 7 | 01-10-2024
+1. `Prog1\` Write the client side and server side of a connection-oriented socket where the server will behave as a chart server serving multiple chart clients. When the chart server receives a “logout” message from a particular client then it terminates the respective connection with that client.
