@@ -3,6 +3,8 @@
         "winsock.h": "c",
         "system_error": "c",
         "valarray": "c",
-        "tuple": "c"
+        "tuple": "c",
+        "fcntl.h": "c",
+        "string.h": "c"
     }
 }

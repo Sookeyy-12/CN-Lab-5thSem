@@ -12,6 +12,7 @@
 #define BACKLOG 5  // Maximum pending connections
 #define MAX_CLIENTS 2
 #define BUFFER_SIZE 1024
+#define IP_ADDRESS "172.24.73.144"
 
 void handle_client_message(int client_socket, fd_set *all_fds) {
     char buffer[BUFFER_SIZE];
@@ -40,7 +41,7 @@ int main() {
     struct sockaddr_in server_addr = {
         .sin_family = AF_INET,
         .sin_port = htons(PORT),
-        .sin_addr.s_addr = INADDR_ANY,
+        .sin_addr.s_addr = inet_addr(IP_ADDRESS),
     };
     struct sockaddr_in clientAddr;
     socklen_t addrlen = sizeof(clientAddr);
