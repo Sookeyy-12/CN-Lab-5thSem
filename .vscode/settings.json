@@ -5,6 +5,7 @@
         "valarray": "c",
         "tuple": "c",
         "fcntl.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "functional": "cpp"
     }
 }
